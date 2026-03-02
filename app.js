@@ -311,3 +311,28 @@ document.querySelectorAll(".nav-list a").forEach((link) => {
     navList.classList.remove("active");
   });
 });
+
+let startX = 0;
+let isDown = false;
+
+track.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+  isDown = true;
+});
+
+track.addEventListener("touchend", (e) => {
+  if (!isDown) return;
+  const endX = e.changedTouches[0].clientX;
+  const diff = startX - endX;
+
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) index++;
+    else index--;
+  }
+
+  if (index < 0) index = 0;
+  if (index > slides.length - 1) index = slides.length - 1;
+
+  track.style.transform = `translateX(-${index * 100}%)`;
+  isDown = false;
+});
