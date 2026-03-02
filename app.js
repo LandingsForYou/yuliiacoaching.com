@@ -20,7 +20,7 @@
     li.setAttribute("aria-label", `Слайд ${i} з ${total}`);
 
     const img = document.createElement("img");
-    img.src = `${base}/${i}.PNG`;
+    img.src = `${base}/${i}.png`;
     img.alt = `Сертифікат ${i}`;
     li.appendChild(img);
 
